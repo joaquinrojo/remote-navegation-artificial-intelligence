@@ -95,7 +95,7 @@ if __name__ == "__main__":
                     #Turn left (debe girar a la izquierda)
                     objRobot.action("R",intensity,duracionMov)
 
-            cv2.imshow('object tracking robot', frame)
+            cv2.imshow('object tracking robot (ESC to close)', frame)
             t = cv2.waitKey(5)
             if t == 27:
                 break
