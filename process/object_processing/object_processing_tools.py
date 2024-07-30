@@ -8,21 +8,18 @@ class ObjectTools:
     def __init__(self):
         pass
 
-    def frame_model_inference(self, image: np.ndarray, model: Any, labels: List[str]) -> Tuple[List[int], str, float]:
+    def frame_model_inference(self, image: np.ndarray, model: Any, labels: List[str], classToDetect: str) -> Tuple[List[int], str, float]:
         bbox = []
         cls = 0
         conf = 0
 
         results = model(image, stream=True, verbose=False, conf=0.3)
-        #print(results)
-        cont=0
-        encontroBuscado=0
+        found=0
         for res in results:
             # Box
             boxes = res.boxes
-            #print(boxes)
             for box in boxes:
-                if(encontroBuscado==0):
+                if(found==0):
                     # Bounding box
                     x1, y1, x2, y2 = box.xyxy[0]
                     x1, y1, x2, y2 = int(x1), int(y1), int(x2), int(y2)
@@ -38,12 +35,11 @@ class ObjectTools:
                     # Class
                     cls = int(box.cls[0])
                     cls = labels[cls]
-                    if(cls=="person"):
-                        encontroBuscado=1
-                    #print("resultado: ",cls, cont)
+                    if(cls==classToDetect):
+                        found=1
                     # Confidence
                     conf = math.ceil(box.conf[0])
-                    cont=cont+1
+
 
         return bbox, cls, conf
 

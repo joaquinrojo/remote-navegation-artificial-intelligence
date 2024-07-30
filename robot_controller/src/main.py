@@ -16,7 +16,7 @@ class PIDControl:
         self.kd = kd
         self.prev_error = 0
         self.integral = 0
-        self.max_error_x = 640
+        self.max_error_x = 600
         self.max_error_z = 22000
         self.max_speed = 100
         pass
@@ -42,55 +42,10 @@ class PIDControl:
 
 
 
-# Car control
-# Library imports
-from vex import *
+
 import struct
 
-# Brain should be defined by default
-brain = Brain()
-pid = PIDControl()
 
-# Motor config
-brain_inertial = Inertial()
-left_drive = Motor(Ports.PORT1, True)
-right_drive = Motor(Ports.PORT5, True)
-drivetrain = SmartDrive(left_drive, right_drive, brain_inertial, 259.34, 320, 40, MM, 1)
-
-brain.screen.print("Object control:")
-
-def serial_monitor():
-    try:
-      s = open('/dev/serial1','rb')
-    except:
-      raise Exception('serial port not available')
-    
-    while True:
-        #data= s.read(1)
-        data= s.read(struct.calcsize("<ii"))
-        unpacked = struct.unpack("<ii", data)
-
-        error_x = unpacked[0]
-        error_z = unpacked[1]
-
-        # control signal pid
-        control_x = pid.pid_control(error_x, 'x')
-        control_x = min(control_x, 50)
-        control_z = pid.pid_control(error_z, 'z')
-        control_z = min(control_z, 50)
-
-        # control motors
-        right_drive.spin(FORWARD, control_x)
-        left_drive.spin(FORWARD, control_x)
-
-        if control_z != 0.0:
-            right_drive.spin(FORWARD, control_z)
-            left_drive.spin(REVERSE, control_z)
-        
-        brain.screen.print_at(control_x, x=5, y=40)
-        brain.screen.print_at(control_z, x=5, y=80)
-        
-t1=Thread(serial_monitor)
 
 
         
