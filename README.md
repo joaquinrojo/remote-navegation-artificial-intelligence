@@ -4,7 +4,7 @@ En este repo se muestra una solución para el control remota vía WIFI de un rob
 
 ### Motivación
 - El objetivo de este proyecto es empezar a documentar las posibilidades que nos abre la computación,procesamiento de imágenes, 
-inteligencia artificial y la robotica para llevar soluciones a problemas de la vida diaria con bajos costos.
+ inteligencia artificial y la robótica para llevar soluciones a problemas de la vida diaria con bajos costos.
 
 
 ### Conceptos introductorios:
@@ -12,10 +12,9 @@ inteligencia artificial y la robotica para llevar soluciones a problemas de la v
  de Imágenes con IA. Uso de algoritmo de control cerrado para la determinar los movimientos del robot
 - Video basado e inspirado en uno de mis mentores virtuales Santiago Sanchez, recomiento seguirlo para produndizar en los conceptos [video.](https://youtu.be/yTkDeIo98pw)
 
-![3D](https://github.com/AprendeIngenia/navegacion-autonoma-con-inteligencia-artificial/assets/85022752/3afd6183-2965-4dd3-9c4a-42d9d613b355)
+![3D](https://raw.githubusercontent.com/joaquinrojo/remote-navegation-artificial-intelligence/main/miniatura.JPG)
 
 
-### Instalacion:
 Para utilizar este código, asegúrese de cumplir con los siguientes requisitos previos:
 
 - Sistema operativo compatible: Windows, Linux o macOS
