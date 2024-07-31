@@ -35,6 +35,8 @@ class ObjectTools:
                     # Class
                     cls = int(box.cls[0])
                     cls = labels[cls]
+                    print(cls,classToDetect)
+
                     if(cls==classToDetect):
                         found=1
                     # Confidence
